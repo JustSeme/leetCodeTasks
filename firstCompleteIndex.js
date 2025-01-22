@@ -28,7 +28,7 @@ var firstCompleteIndex = function(arr, mat) {
         
         if(rowCounts[row] === cols || colCounts[col] === rows) return i
     }
-};
+}
 
 const arr = [1,4,5,2,6,3]
 const mat = [[4,3,5],[1,2,6]]
