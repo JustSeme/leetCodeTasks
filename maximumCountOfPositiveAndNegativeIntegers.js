@@ -13,19 +13,47 @@
   return Math.max(positiveCount, negetiveCount);
 }; */
 
+function lowerBound(arr) {
+	let start = 0;
+	let end = arr.length - 1;
+	let index = arr.length;
+
+	while (start <= end) {
+		let mid = Math.ceil((start + end) / 2);
+
+		if(arr[mid] < 0) start = mid + 1;
+		else if(arr[mid] >= 0) {
+			end = mid - 1;
+			index = mid;
+		}
+	}
+	return index;
+}
+
+function upperBound(arr) {
+	let start = 0;
+	let end = arr.length - 1;
+	let index = arr.length;
+
+	while (start <= end) {
+		let mid = Math.ceil((start + end) / 2);
+
+		if(arr[mid] <= 0) start = mid + 1;
+		else if(arr[mid] > 0) {
+			end = mid - 1;
+			index = mid;
+		}
+	}
+	return index;
+}
+
 /**
  * @param {number[]} nums
  * @return {number}
  */
 var maximumCount = function (nums) {
-  const halfLength = Math.ceil(nums.length / 2);
-  const rightSide = nums.slice(halfLength);
-
-  const leftSide = nums.slice(0, halfLength);
-
-  console.log('left ', leftSide);
-  console.log('right ', rightSide);
+	return Math.max(lowerBound(nums), nums.length - upperBound(nums));
 };
 
-const arr = [-2, -1, -1, 1, 2, 3, 4];
-maximumCount(arr);
+const arr = [-2, -1, -1, -1, -1, 0, 0, 1, 2, 3, 4, 5];
+console.log(maximumCount(arr));
