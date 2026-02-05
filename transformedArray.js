@@ -1,4 +1,4 @@
-function constructTransformedArray(nums) {
+/* function constructTransformedArray(nums) {
 	const numsLength = nums.length
 	const result = []
 
@@ -15,6 +15,17 @@ function constructTransformedArray(nums) {
 	}
 
 	return result
+} */
+
+function constructTransformedArray(nums) {
+  const n = nums.length;
+  const result = [];
+
+  for (let i = 0; i < n; i++) {
+    result[i] = nums[(((i + nums[i]) % n) + n) % n];
+  }
+
+  return result;
 }
 
 console.log(constructTransformedArray([-10]));
