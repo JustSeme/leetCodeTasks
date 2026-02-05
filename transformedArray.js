@@ -17,7 +17,7 @@
 	return result
 } */
 
-function constructTransformedArray(nums) {
+/* function constructTransformedArray(nums) {
   const n = nums.length;
   const result = [];
 
@@ -26,6 +26,24 @@ function constructTransformedArray(nums) {
   }
 
   return result;
+} */
+
+function constructTransformedArray(nums) {
+	const n = nums.length
+	const result = new Array(n)
+
+	for(let i = 0; i < n; i++) {
+		const x = nums[i]
+
+		if(x === 0) {
+			result[i] = x
+		} else {
+			const target = ((i + x) % n + n) % n
+			result[i] = nums[target]
+		}
+	}
+
+	return result
 }
 
 console.log(constructTransformedArray([-10]));
