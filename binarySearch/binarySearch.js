@@ -37,13 +37,15 @@
 function search(nums, target) {
   let low = 0, high = nums.length
 
-  while(low <= high) {
+  while(low <= high && high < nums.length) {
     let mid = Math.floor((low + high) / 2)
 
     if(nums[mid] === target) return mid
     else if (target > nums[mid]) low = mid
     else if (target < nums[mid]) right = mid 
   }
+
+  return -1
 }
 
-console.log(search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 9));
+console.log(search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11));
